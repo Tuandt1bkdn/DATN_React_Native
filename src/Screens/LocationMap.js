@@ -1,6 +1,8 @@
 import * as React from "react";
 import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
-import { View, Text, StyleSheet, Dimensions } from "react-native";
+import { StyleSheet, Text, View, Dimensions } from "react-native";
+import { GOOGLE_API_KEY } from "../../environments";
+
 const { width, height } = Dimensions.get("window");
 const ASPECT_RATIO = width / height;
 const Latitude_Delta = 0.07;
@@ -12,7 +14,7 @@ const Init_Position = {
   longitudeDelta: Longitude_Delta,
 };
 
-const Search = () => {
+export default function LocationMap() {
   return (
     <View style={styles.container}>
       <MapView
@@ -22,7 +24,7 @@ const Search = () => {
       />
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -37,5 +39,20 @@ const styles = StyleSheet.create({
     width: Dimensions.get("window").width,
     height: Dimensions.get("window").height,
   },
+  searchContainer: {
+    position: "absolute",
+    width: "90%",
+    backgroundColor: "white",
+    shadowColor: "black",
+    shadowOffset: { width: 2, height: 2 },
+    shadowOpacity: 0.5,
+    shadowRadius: 4,
+    elevation: View,
+    padding: 8,
+    borderRadius: 8,
+  },
+  input: {
+    borderColor: "#888",
+    borderWidth: 1,
+  },
 });
-export default Search;

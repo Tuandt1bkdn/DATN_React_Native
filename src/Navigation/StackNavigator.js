@@ -1,25 +1,23 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-
-import Home from "../Screens/HomeScreen";
-import Search from "../Screens/SearchScreen";
 import Location from "../Screens/LocationScreen";
+import LocationMap from "../Screens/LocationMap";
 
 const Stack = createStackNavigator();
 
 const screenOptionStyle = {
-  headerStyle: {
-    backgroundColor: "#9AC4F8",
-  },
-  headerTintColor: "white",
-  headerBackTitle: "Back",
+  headerShown: false,
 };
 
 const MainStackNavigator = () => {
   return (
     <Stack.Navigator screenOptions={screenOptionStyle}>
-      <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="Location" component={Location} />
+      <Stack.Screen
+        name="LOCATION"
+        component={Location}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen name="LocationMap" component={LocationMap} />
     </Stack.Navigator>
   );
 };

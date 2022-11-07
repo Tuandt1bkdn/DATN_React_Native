@@ -16,6 +16,7 @@ import {
   faLock,
   faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
+import { MainStackNavigator } from "./StackNavigator";
 
 const Tab = createBottomTabNavigator();
 
@@ -26,13 +27,9 @@ const BottomTabNavigator = () => {
         tabBarShowLabel: false,
         tabBarStyle: {
           position: "absolute",
-          bottom: 25,
-          left: 20,
-          right: 20,
           elevation: 0,
-          backgroundColor: "#ffffff",
-          borderRadius: 15,
-          height: 90,
+          backgroundColor: "white",
+          height: 60,
           ...style.shadow,
           flex: 1,
           justifyContent: "space-between",
@@ -43,6 +40,7 @@ const BottomTabNavigator = () => {
         name="Home"
         component={Home}
         options={{
+          headerShown: false,
           tabBarIcon: ({ focused }) => (
             <View
               style={{
@@ -58,7 +56,7 @@ const BottomTabNavigator = () => {
               <Text
                 style={{
                   color: focused ? "red" : "black",
-                  fontSize: 15,
+                  fontSize: 13,
                 }}>
                 Trang chủ
               </Text>
@@ -70,6 +68,7 @@ const BottomTabNavigator = () => {
         name="Search"
         component={Search}
         options={{
+          headerShown: false,
           tabBarIcon: ({ focused }) => (
             <View
               style={{
@@ -85,7 +84,7 @@ const BottomTabNavigator = () => {
               <Text
                 style={{
                   color: focused ? "red" : "black",
-                  fontSize: 15,
+                  fontSize: 13,
                 }}>
                 Tìm đường
               </Text>
@@ -95,8 +94,9 @@ const BottomTabNavigator = () => {
       />
       <Tab.Screen
         name="Location"
-        component={Location}
+        component={MainStackNavigator}
         options={{
+          headerShown: false,
           tabBarIcon: ({ focused }) => (
             <View
               style={{
@@ -112,7 +112,7 @@ const BottomTabNavigator = () => {
               <Text
                 style={{
                   color: focused ? "red" : "black",
-                  fontSize: 15,
+                  fontSize: 13,
                 }}>
                 Dò vị trí
               </Text>
@@ -124,6 +124,7 @@ const BottomTabNavigator = () => {
         name="Warning"
         component={Warning}
         options={{
+          headerShown: false,
           tabBarIcon: ({ focused }) => (
             <View
               style={{
@@ -139,7 +140,7 @@ const BottomTabNavigator = () => {
               <Text
                 style={{
                   color: focused ? "red" : "black",
-                  fontSize: 15,
+                  fontSize: 13,
                 }}>
                 Cảnh báo
               </Text>
@@ -166,9 +167,9 @@ const BottomTabNavigator = () => {
               <Text
                 style={{
                   color: focused ? "red" : "black",
-                  fontSize: 15,
+                  fontSize: 13,
                 }}>
-                Ddawng nhaajp
+                Đăng nhập
               </Text>
             </View>
           ),

@@ -16,7 +16,7 @@ import {
   faLock,
   faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
-import { MainStackNavigator } from "./StackNavigator";
+import { FirstStackNavigator, SecondStackNavigator } from "./StackNavigator";
 
 const Tab = createBottomTabNavigator();
 
@@ -94,7 +94,7 @@ const BottomTabNavigator = () => {
       />
       <Tab.Screen
         name="Location"
-        component={MainStackNavigator}
+        component={FirstStackNavigator}
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
@@ -122,7 +122,7 @@ const BottomTabNavigator = () => {
       />
       <Tab.Screen
         name="Warning"
-        component={Warning}
+        component={SecondStackNavigator}
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (

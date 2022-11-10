@@ -1,10 +1,12 @@
+// ./screens/Home.js
+
 import React from "react";
 import { View, Button, Text, StyleSheet } from "react-native";
 
-const Home = () => {
+const Distance = () => {
   return (
     <View style={styles.center}>
-      <Text>This is the home screen</Text>
+      <Text>This is the Distance screen</Text>
     </View>
   );
 };
@@ -19,4 +21,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Home;
+export default Distance;

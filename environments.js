@@ -1,1 +1,2 @@
-export const GOOGLE_API_KEY = "AIzaSyDweiBhldjUDCMM_nJKLUSUL2zfAssSwTo";
+export const GOOGLE_API_KEY =
+  "AIzaSyDweiBhldjUDCMM_nJKLUSUL2zfAssSwTo&callback=initMap";

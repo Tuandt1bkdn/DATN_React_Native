@@ -120,6 +120,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     padding: 10,
+    margin: 25,
   },
   appButtonText: {
     fontSize: 18,

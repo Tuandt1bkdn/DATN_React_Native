@@ -46,16 +46,19 @@ const BottomTabNavigator = () => {
               style={{
                 alignItems: "center",
                 justifyContent: "center",
+                width: "100%",
+                height: "100%",
+                backgroundColor: "white",
               }}>
               <FontAwesomeIcon
                 icon={faHome}
                 style={{
-                  color: focused ? "red" : "black",
+                  color: focused ? "#1412df" : "#808080",
                 }}
               />
               <Text
                 style={{
-                  color: focused ? "red" : "black",
+                  color: focused ? "#1412df" : "#808080",
                   fontSize: 13,
                 }}>
                 Trang chủ
@@ -74,16 +77,19 @@ const BottomTabNavigator = () => {
               style={{
                 alignItems: "center",
                 justifyContent: "center",
+                width: "100%",
+                height: "100%",
+                backgroundColor: "white",
               }}>
               <FontAwesomeIcon
                 icon={faMagnifyingGlass}
                 style={{
-                  color: focused ? "red" : "black",
+                  color: focused ? "#1412df" : "#808080",
                 }}
               />
               <Text
                 style={{
-                  color: focused ? "red" : "black",
+                  color: focused ? "#1412df" : "#808080",
                   fontSize: 13,
                 }}>
                 Tìm đường
@@ -102,16 +108,19 @@ const BottomTabNavigator = () => {
               style={{
                 alignItems: "center",
                 justifyContent: "center",
+                width: "100%",
+                height: "100%",
+                backgroundColor: "white",
               }}>
               <FontAwesomeIcon
                 icon={faLocationDot}
                 style={{
-                  color: focused ? "red" : "black",
+                  color: focused ? "#1412df" : "#808080",
                 }}
               />
               <Text
                 style={{
-                  color: focused ? "red" : "black",
+                  color: focused ? "#1412df" : "#808080",
                   fontSize: 13,
                 }}>
                 Dò vị trí
@@ -130,16 +139,19 @@ const BottomTabNavigator = () => {
               style={{
                 alignItems: "center",
                 justifyContent: "center",
+                width: "100%",
+                height: "100%",
+                backgroundColor: "white",
               }}>
               <FontAwesomeIcon
                 icon={faCircleExclamation}
                 style={{
-                  color: focused ? "red" : "black",
+                  color: focused ? "#1412df" : "#808080",
                 }}
               />
               <Text
                 style={{
-                  color: focused ? "red" : "black",
+                  color: focused ? "#1412df" : "#808080",
                   fontSize: 13,
                 }}>
                 Cảnh báo
@@ -157,16 +169,19 @@ const BottomTabNavigator = () => {
               style={{
                 alignItems: "center",
                 justifyContent: "center",
+                width: "100%",
+                height: "100%",
+                backgroundColor: "white",
               }}>
               <FontAwesomeIcon
                 icon={faLock}
                 style={{
-                  color: focused ? "red" : "black",
+                  color: focused ? "#1412df" : "#808080",
                 }}
               />
               <Text
                 style={{
-                  color: focused ? "red" : "black",
+                  color: focused ? "#1412df" : "#808080",
                   fontSize: 13,
                 }}>
                 Đăng nhập

@@ -1,8 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
-//import { MainStackNavigator, ContactStackNavigator } from "./StackNavigator";
+import { SecondStackNavigator } from "./SecondStackNavigator";
 import Home from "../Screens/HomeScreen";
 import Search from "../Screens/SearchScreen";
 import Location from "../Screens/LocationScreen";
@@ -16,7 +15,7 @@ import {
   faLock,
   faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
-import { FirstStackNavigator, SecondStackNavigator } from "./StackNavigator";
+import UserScreen from "../Screens/UserScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -36,37 +35,6 @@ const BottomTabNavigator = () => {
           alignItems: "center",
         },
       }}>
-      <Tab.Screen
-        name="Home"
-        component={Home}
-        options={{
-          headerShown: false,
-          tabBarIcon: ({ focused }) => (
-            <View
-              style={{
-                alignItems: "center",
-                justifyContent: "center",
-                width: "100%",
-                height: "100%",
-                backgroundColor: "white",
-              }}>
-              <FontAwesomeIcon
-                icon={faHome}
-                style={{
-                  color: focused ? "#1412df" : "#808080",
-                }}
-              />
-              <Text
-                style={{
-                  color: focused ? "#1412df" : "#808080",
-                  fontSize: 13,
-                }}>
-                Trang chủ
-              </Text>
-            </View>
-          ),
-        }}
-      />
       <Tab.Screen
         name="Search"
         component={Search}
@@ -100,7 +68,7 @@ const BottomTabNavigator = () => {
       />
       <Tab.Screen
         name="Location"
-        component={FirstStackNavigator}
+        component={Location}
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
@@ -161,8 +129,8 @@ const BottomTabNavigator = () => {
         }}
       />
       <Tab.Screen
-        name="Login"
-        component={Login}
+        name="UserScreen"
+        component={UserScreen}
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
@@ -185,7 +153,7 @@ const BottomTabNavigator = () => {
                   color: focused ? "#1412df" : "#808080",
                   fontSize: 13,
                 }}>
-                Login
+                UserScreen
               </Text>
             </View>
           ),

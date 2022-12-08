@@ -1,98 +1,195 @@
-// ./screens/Home.js
-
-import {
-  faLocation,
-  faLocationDot,
-  faRoute,
-  faSquare,
-  faSquareVirus,
-  faTemperatureHigh,
-} from "@fortawesome/free-solid-svg-icons";
 import React from "react";
-import { View, Button, Text, StyleSheet, TouchableOpacity } from "react-native";
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import {
+  Image,
+  View,
+  Button,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+} from "react-native";
+
 const Warning = ({ navigation }) => {
   return (
-    <View style={styles.wrapper}>
-      <View style={styles.thong_so}>
-        <View style={styles.thong_so_1}>
-          <Text
+    <SafeAreaView style={styles.container}>
+      <ScrollView>
+        <View style={styles.wrapper}>
+          <View
             style={{
-              flex: 1.5,
-              textAlign: "center",
-              alignContent: "center",
-              justifyContent: "center",
-              fontSize: 80,
-              paddingTop: 10,
-              color: "#687fe0",
+              marginTop: 20,
             }}>
-            40°C
-          </Text>
-          <Text
-            style={{
-              flex: 1.5,
-              textAlign: "center",
-              fontSize: 70,
-              color: "#687fe0",
-            }}>
-            45 VDC
-          </Text>
+            <Text
+              style={{
+                color: "red",
+                fontSize: 20,
+              }}>
+              Thong so luc : 21:06, 8/12/2022
+            </Text>
+          </View>
+          <View style={styles.thongso}>
+            <View style={styles.thongsoImage}>
+              <Image
+                style={{
+                  width: "100%",
+                  height: "100%",
+                }}
+                source={{
+                  uri: `https://cdn-icons-png.flaticon.com/512/1035/1035618.png?w=360`,
+                }}
+              />
+            </View>
+            <View style={styles.thongsoValue}>
+              <Text style={styles.thongsoValueHeader}>
+                Nhiệt độ nước làm mát
+              </Text>
+              <View style={styles.thongsoValueContent}>
+                <Text
+                  style={{
+                    fontSize: 65,
+                  }}>
+                  40
+                </Text>
+                <Text
+                  style={{
+                    marginBottom: 10,
+                    fontSize: 40,
+                  }}>
+                  °C
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View style={styles.thongso}>
+            <View style={styles.thongsoImage}>
+              <Image
+                style={{
+                  width: "100%",
+                  height: "100%",
+                }}
+                source={{
+                  uri: `https://www.pngplay.com/wp-content/uploads/6/High-Voltage-Symbol-Transparent-PNG.png`,
+                }}
+              />
+            </View>
+            <View style={styles.thongsoValue}>
+              <Text style={styles.thongsoValueHeader}>
+                Điện áp Bình Ac-quy{" "}
+              </Text>
+              <View style={styles.thongsoValueContent}>
+                <Text
+                  style={{
+                    fontSize: 65,
+                  }}>
+                  40
+                </Text>
+                <Text
+                  style={{
+                    fontSize: 65,
+                  }}>
+                  V
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View style={styles.thongso}>
+            <View style={styles.thongsoImage}>
+              <Image
+                style={{
+                  width: "100%",
+                  height: "70%",
+                }}
+                source={{
+                  uri: `https://pngimage.net/wp-content/uploads/2018/06/speed-meter-png-4.png`,
+                }}
+              />
+            </View>
+            <View style={styles.thongsoValue}>
+              <Text style={styles.thongsoValueHeader}>Vận tốc </Text>
+              <View style={styles.thongsoValueContent}>
+                <Text
+                  style={{
+                    fontSize: 65,
+                  }}>
+                  40
+                </Text>
+                <Text
+                  style={{
+                    marginTop: 15,
+                    fontSize: 40,
+                  }}>
+                  km/h
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View>
+            <Button
+              title="Xem biểu đồ"
+              onPress={() => navigation.navigate("ChartsScreen")}></Button>
+          </View>
         </View>
-        <View style={styles.thong_so_2}>
-          <FontAwesomeIcon icon={faLocationDot} />
-          <Text
-            style={{
-              justifyContent: "flex-end",
-              alignItems: "flex-end",
-              textAlign: "right",
-              fontSize: 15,
-              paddingBottom: 20,
-            }}>
-            Số 86, đường Nguyễn Sinh Sắc, phường Hoà Minh, Liên Chiểu, Đà Nẵng
-          </Text>
-        </View>
-      </View>
-      <View style={styles.center}>
-        <TouchableOpacity style={styles.appButtonContainer}>
-          <FontAwesomeIcon icon={faTemperatureHigh} />
-          <Text onPress={() => navigation.navigate("WaterA")}>
-            Nhiệt độ nước
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.appButtonContainer}>
-          <FontAwesomeIcon icon={faSquareVirus} />
-          <Text onPress={() => navigation.navigate("DienAp")}>Điện áp</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.appButtonContainer}>
-          <FontAwesomeIcon icon={faRoute} />
-          <Text onPress={() => navigation.navigate("Distance")}>
-            Khoảng cách
-          </Text>
-        </TouchableOpacity>
-      </View>
-    </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  wrapper: {
+  container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
     backgroundColor: "white",
+    top: StatusBar.currentHeight,
   },
-  thong_so: {
-    width: "90%",
-    height: 250,
-    backgroundColor: "#e4f5ff",
-    flex: 0.5,
+  wrapper: {
     justifyContent: "center",
     alignItems: "center",
-    top: 100,
-    borderRadius: 15,
+
+    height: 680,
+    flexDirection: "column",
+    justifyContent: "space-between",
   },
+  thongso: {
+    borderColor: "#ccc",
+    borderWidth: 1,
+    borderStyle: "solid",
+    width: "90%",
+    height: 150,
+    backgroundColor: "#e4f5ff",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 15,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-around",
+  },
+  thongsoImage: {
+    //backgroundColor: "red",
+    height: 60,
+    width: 60,
+  },
+  thongsoValue: {
+    height: "90%",
+    width: 250,
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "space-around",
+  },
+  thongsoValueHeader: {
+    textAlign: "center",
+    fontSize: 18,
+  },
+  thongsoValueContent: {
+    width: "90%",
+    height: "70%",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
   thong_so_1: {
-    flex: 3,
+    //flex: 3,
     flexDirection: "row",
     width: "100%",
     backgroundColor: "transparent",
@@ -105,7 +202,8 @@ const styles = StyleSheet.create({
   center: {
     width: "100%",
     height: "100%",
-    flex: 1,
+    //flex: 1,
+    backgroundColor: "red",
     justifyContent: "center",
     alignItems: "center",
     textAlign: "center",

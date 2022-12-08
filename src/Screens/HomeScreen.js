@@ -18,7 +18,7 @@ const images = [
 const WIDTH = Dimensions.get("screen").width;
 //const HEIGHT = Dimensions.get("screen").height;
 
-const Home = () => {
+const Home = ({ navigation }) => {
   return (
     <ScrollView>
       <View style={styles.center}>
@@ -131,8 +131,9 @@ const Home = () => {
           top: 0,
           backgroundColor: "red",
         }}>
-        <Button title="Test"></Button>
-        <Text>ABCD</Text>
+        <Button
+          title="Manage"
+          onPress={() => navigation.navigate("BottomTabNavigator")}></Button>
         <Text>ABCD</Text>
         <Text>ABCD</Text>
         <Text>ABCD</Text>

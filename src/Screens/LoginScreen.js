@@ -12,23 +12,11 @@ const Login = () => {
   const [text, onChangeText] = React.useState(null);
   const [number, onChangeNumber] = React.useState(null);
   return (
-    <SafeAreaView>
-      <TextInput
-        style={styles.input}
-        onChangeText={onChangeText}
-        value={text}
-        placeholder="Tên đăng nhập"
-      />
-      <TextInput
-        style={styles.input}
-        onChangeText={onChangeNumber}
-        value={number}
-        placeholder="Mật khẩu"
-      />
-      <TouchableOpacity styles={styles.touch_button}>
-        <Text style={styles.forgot_button}>Quên mật khẩu?</Text>
-      </TouchableOpacity>
-    </SafeAreaView>
+    <View>
+      <Text>AV</Text>
+      <Text>AV</Text>
+      <Text>AV</Text>
+    </View>
   );
 };
 

@@ -154,7 +154,7 @@ const BottomTabNavigator = () => {
                   color: focused ? "#1412df" : "#808080",
                   fontSize: 13,
                 }}>
-                Cảnh báo
+                Thông số
               </Text>
             </View>
           ),
@@ -164,6 +164,7 @@ const BottomTabNavigator = () => {
         name="Login"
         component={Login}
         options={{
+          headerShown: false,
           tabBarIcon: ({ focused }) => (
             <View
               style={{
@@ -174,7 +175,7 @@ const BottomTabNavigator = () => {
                 backgroundColor: "white",
               }}>
               <FontAwesomeIcon
-                icon={faLock}
+                icon={faCircleExclamation}
                 style={{
                   color: focused ? "#1412df" : "#808080",
                 }}
@@ -184,7 +185,7 @@ const BottomTabNavigator = () => {
                   color: focused ? "#1412df" : "#808080",
                   fontSize: 13,
                 }}>
-                Đăng nhập
+                Login
               </Text>
             </View>
           ),

@@ -2,6 +2,7 @@ import React from "react";
 import {
   View,
   Button,
+  ScrollView,
   Text,
   Dimensions,
   StyleSheet,
@@ -15,112 +16,131 @@ const images = [
 ];
 
 const WIDTH = Dimensions.get("screen").width;
-const HEIGHT = Dimensions.get("screen").height;
+//const HEIGHT = Dimensions.get("screen").height;
 
 const Home = () => {
   return (
-    <View style={styles.center}>
-      <View style={styles.gif}>
-        <Text> GIF Demo Giới thiệu</Text>
-      </View>
-      <View
-        style={{
-          flex: 0.13,
-          width: "90%",
-          backgroundColor: "white",
-        }}>
-        <Text
+    <ScrollView>
+      <View style={styles.center}>
+        <View style={styles.gif}>
+          <Text> GIF Demo Giới thiệu</Text>
+        </View>
+        <View
           style={{
-            top: 20,
-            textAlign: "center",
-            fontStyle: "italic",
+            flex: 0.13,
+            width: "90%",
+            backgroundColor: "white",
           }}>
-          Dự án phát triển với sự kết hợp của : Khoa Điện tử - Viễn thông và
-          Trung tâm Phát triển Hạ tầng Công nghệ Thông tin Đà Nẵng
-        </Text>
-      </View>
-      <View
-        style={{
-          flex: 0.5,
-          width: "100%",
-          backgroundColor: "white",
-        }}>
-        <Text style={{ flex: 0.15, fontWeight: "900" }}>
-          KHÁM PHÁ CÁC CHỨC NĂNG CỦA ỨNG DỤNG
-        </Text>
+          <Text
+            style={{
+              top: 20,
+              textAlign: "center",
+              fontStyle: "italic",
+            }}>
+            Dự án phát triển với sự kết hợp của : Khoa Điện tử - Viễn thông và
+            Trung tâm Phát triển Hạ tầng Công nghệ Thông tin Đà Nẵng
+          </Text>
+        </View>
         <View
           style={{
             flex: 0.5,
-            backgroundColor: "red",
-            flexDirection: "row",
+            width: "100%",
+            height: 50,
+            backgroundColor: "blue",
           }}>
+          <Text style={{ flex: 0.15, fontWeight: "900" }}>
+            KHÁM PHÁ CÁC CHỨC NĂNG CỦA ỨNG DỤNG
+          </Text>
           <View
             style={{
-              flex: 1 / 3,
-              backgroundColor: "white",
-              alignItems: "center",
-              justifyContent: "space-between",
+              flex: 0.5,
+              backgroundColor: "red",
+              flexDirection: "row",
             }}>
-            <Image
+            <View
               style={{
-                flex: 0.9,
-                top: 5,
-                width: "90%",
-                borderRadius: 10,
-              }}
-              source={{
-                uri: "https://danhkiet.com/upload_images/images/cach-nhap-toa-do-vao-google-map.jpg",
-              }}
-            />
-            <Text style={{ fontStyle: "italic" }}>
-              Kiểm tra toạ độ hiện tại
-            </Text>
-          </View>
-          <View
-            style={{
-              flex: 1 / 3,
-              backgroundColor: "white",
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}>
-            <Image
+                flex: 1 / 3,
+                backgroundColor: "white",
+                alignItems: "center",
+                justifyContent: "space-between",
+              }}>
+              <Image
+                style={{
+                  flex: 0.9,
+                  top: 5,
+                  width: "90%",
+                  borderRadius: 10,
+                }}
+                source={{
+                  uri: "https://danhkiet.com/upload_images/images/cach-nhap-toa-do-vao-google-map.jpg",
+                }}
+              />
+              <Text style={{ fontStyle: "italic" }}>
+                Kiểm tra toạ độ hiện tại
+              </Text>
+            </View>
+            <View
               style={{
-                flex: 0.9,
-                top: 5,
-                width: "90%",
-                height: "60%",
-                borderRadius: 10,
-              }}
-              source={{
-                uri: "https://help.opendatasoft.com/platform/en/_images/chart-layers-series.png",
-              }}
-            />
-            <Text style={{ fontStyle: "italic" }}>Nhiệt độ nước làm mát </Text>
-          </View>
-          <View
-            style={{
-              flex: 1 / 3,
-              backgroundColor: "white",
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}>
-            <Image
+                flex: 1 / 3,
+                backgroundColor: "white",
+                alignItems: "center",
+                justifyContent: "space-between",
+              }}>
+              <Image
+                style={{
+                  flex: 0.9,
+                  top: 5,
+                  width: "90%",
+                  height: "60%",
+                  borderRadius: 10,
+                }}
+                source={{
+                  uri: "https://help.opendatasoft.com/platform/en/_images/chart-layers-series.png",
+                }}
+              />
+              <Text style={{ fontStyle: "italic" }}>
+                Nhiệt độ nước làm mát{" "}
+              </Text>
+            </View>
+            <View
               style={{
-                flex: 0.8,
-                top: 5,
-                width: "90%",
-                height: "60%",
-                borderRadius: 10,
-              }}
-              source={{
-                uri: "https://help.opendatasoft.com/platform/en/_images/chart-layers-series.png",
-              }}
-            />
-            <Text style={{ fontStyle: "italic" }}>Điện áp bình Acquy</Text>
+                flex: 1 / 3,
+                backgroundColor: "white",
+                alignItems: "center",
+                justifyContent: "space-between",
+              }}>
+              <Image
+                style={{
+                  flex: 0.8,
+                  top: 5,
+                  width: "90%",
+                  height: "60%",
+                  borderRadius: 10,
+                }}
+                source={{
+                  uri: "https://help.opendatasoft.com/platform/en/_images/chart-layers-series.png",
+                }}
+              />
+              <Text style={{ fontStyle: "italic" }}>Điện áp bình Acquy</Text>
+            </View>
           </View>
         </View>
       </View>
-    </View>
+      <View
+        style={{
+          top: 0,
+          backgroundColor: "red",
+        }}>
+        <Button title="Test"></Button>
+        <Text>ABCD</Text>
+        <Text>ABCD</Text>
+        <Text>ABCD</Text>
+        <Text>ABCD</Text>
+        <Text>ABCD</Text>
+        <Text>ABCD</Text>
+        <Text>ABCD</Text>
+      </View>
+    </ScrollView>
   );
 };
 
@@ -128,7 +148,7 @@ const styles = StyleSheet.create({
   center: {
     flex: 1,
     width: WIDTH,
-    height: HEIGHT,
+    height: 700,
     justifyContent: "flex-start",
     alignItems: "center",
     textAlign: "center",

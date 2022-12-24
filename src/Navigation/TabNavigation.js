@@ -2,18 +2,12 @@ import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { SecondStackNavigator } from "./SecondStackNavigator";
-import Home from "../Screens/HomeScreen";
-import Search from "../Screens/SearchScreen";
 import Location from "../Screens/LocationScreen";
-import Warning from "../Screens/WarningScreen";
-import Login from "../Screens/LoginScreen";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import {
   faCircleExclamation,
-  faHome,
+  faIdCard,
   faLocationDot,
-  faLock,
-  faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
 import UserScreen from "../Screens/UserScreen";
 
@@ -36,8 +30,8 @@ const BottomTabNavigator = () => {
         },
       }}>
       <Tab.Screen
-        name="Search"
-        component={Search}
+        name="UserScreen"
+        component={UserScreen}
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
@@ -50,17 +44,18 @@ const BottomTabNavigator = () => {
                 backgroundColor: "white",
               }}>
               <FontAwesomeIcon
-                icon={faMagnifyingGlass}
+                icon={faIdCard}
                 style={{
-                  color: focused ? "#1412df" : "#808080",
+                  color: focused ? "#4a4ee7" : "#808080",
                 }}
               />
               <Text
                 style={{
-                  color: focused ? "#1412df" : "#808080",
+                  color: focused ? "#4a4ee7" : "#808080",
+                  fontFamily: "OpenSans_600SemiBold",
                   fontSize: 13,
                 }}>
-                Tìm đường
+                Tài xế
               </Text>
             </View>
           ),
@@ -74,6 +69,7 @@ const BottomTabNavigator = () => {
           tabBarIcon: ({ focused }) => (
             <View
               style={{
+                flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
                 width: "100%",
@@ -82,14 +78,18 @@ const BottomTabNavigator = () => {
               }}>
               <FontAwesomeIcon
                 icon={faLocationDot}
+                fontSize={1}
                 style={{
-                  color: focused ? "#1412df" : "#808080",
+                  //fontSize: 25,
+                  color: focused ? "#4a4ee7" : "#808080",
                 }}
               />
               <Text
                 style={{
-                  color: focused ? "#1412df" : "#808080",
-                  fontSize: 13,
+                  color: focused ? "#4a4ee7" : "#808080",
+                  fontFamily: "OpenSans_600SemiBold",
+                  fontSize: 12,
+                  paddingTop: 5,
                 }}>
                 Dò vị trí
               </Text>
@@ -114,46 +114,16 @@ const BottomTabNavigator = () => {
               <FontAwesomeIcon
                 icon={faCircleExclamation}
                 style={{
-                  color: focused ? "#1412df" : "#808080",
+                  color: focused ? "#4a4ee7" : "#808080",
                 }}
               />
               <Text
                 style={{
-                  color: focused ? "#1412df" : "#808080",
+                  color: focused ? "#4a4ee7" : "#808080",
+                  fontFamily: "OpenSans_600SemiBold",
                   fontSize: 13,
                 }}>
                 Thông số
-              </Text>
-            </View>
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="UserScreen"
-        component={UserScreen}
-        options={{
-          headerShown: false,
-          tabBarIcon: ({ focused }) => (
-            <View
-              style={{
-                alignItems: "center",
-                justifyContent: "center",
-                width: "100%",
-                height: "100%",
-                backgroundColor: "white",
-              }}>
-              <FontAwesomeIcon
-                icon={faCircleExclamation}
-                style={{
-                  color: focused ? "#1412df" : "#808080",
-                }}
-              />
-              <Text
-                style={{
-                  color: focused ? "#1412df" : "#808080",
-                  fontSize: 13,
-                }}>
-                UserScreen
               </Text>
             </View>
           ),

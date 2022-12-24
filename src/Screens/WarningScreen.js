@@ -10,141 +10,237 @@ import {
   ScrollView,
   StatusBar,
 } from "react-native";
+import { useState, useEffect } from "react";
+import Chart from "../Components/Layout/Chart";
+import axios from "axios";
 
 const Warning = ({ navigation }) => {
+  const [data, setData] = useState({});
+  const [timelabel, setTimelabel] = useState();
+  const [time, setTime] = useState();
+  const [temp, setTemp] = useState([22, 22, 22, 22, 22]);
+  const [voltage, setVoltage] = useState([22, 22, 22, 22, 22]);
+  const [speed, setSpeed] = useState([22, 22, 22, 22, 22]);
+  useEffect(() => {
+    setInterval(() => {
+      axios.get("https://back-end-datn-sor1.vercel.app/datanow").then((res) => {
+        const json = res.data;
+        setTimelabel([
+          json[4].realtimelocal.substring(0, 8),
+          json[3].realtimelocal.substring(0, 8),
+          json[2].realtimelocal.substring(0, 8),
+          json[1].realtimelocal.substring(0, 8),
+          json[0].realtimelocal.substring(0, 8),
+        ]);
+        setTime(json[0].realtimelocal);
+        setTemp([
+          json[4].temp,
+          json[3].temp,
+          json[2].temp,
+          json[1].temp,
+          json[0].temp,
+        ]);
+        setVoltage([
+          json[4].voltage,
+          json[3].voltage,
+          json[2].voltage,
+          json[1].voltage,
+          json[0].voltage,
+        ]);
+        setSpeed([
+          json[4].speed,
+          json[3].speed,
+          json[2].speed,
+          json[1].speed,
+          json[0].speed,
+        ]);
+        setData(json[0]);
+      });
+    }, 5000);
+  }, []);
+
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.containerview}>
       <ScrollView>
-        <View style={styles.wrapper}>
-          <View
-            style={{
-              marginTop: 20,
-            }}>
-            <Text
-              style={{
-                color: "red",
-                fontSize: 20,
-              }}>
-              Thong so luc : 21:06, 8/12/2022
-            </Text>
-          </View>
-          <View style={styles.thongso}>
-            <View style={styles.thongsoImage}>
-              <Image
+        {!data ? (
+          <Text>Khong co du lieu</Text>
+        ) : (
+          <View style={styles.container}>
+            <View style={styles.wrapper}>
+              <View
                 style={{
-                  width: "100%",
-                  height: "100%",
-                }}
-                source={{
-                  uri: `https://cdn-icons-png.flaticon.com/512/1035/1035618.png?w=360`,
-                }}
-              />
-            </View>
-            <View style={styles.thongsoValue}>
-              <Text style={styles.thongsoValueHeader}>
-                Nhiệt độ nước làm mát
-              </Text>
-              <View style={styles.thongsoValueContent}>
+                  marginTop: 20,
+                }}>
                 <Text
                   style={{
-                    fontSize: 65,
+                    color: "#ffa07a",
+                    fontSize: 20,
+                    fontFamily: "OpenSans_600SemiBold",
                   }}>
-                  40
-                </Text>
-                <Text
-                  style={{
-                    marginBottom: 10,
-                    fontSize: 40,
-                  }}>
-                  °C
+                  Thông số lúc : {time}
                 </Text>
               </View>
-            </View>
-          </View>
-          <View style={styles.thongso}>
-            <View style={styles.thongsoImage}>
-              <Image
-                style={{
-                  width: "100%",
-                  height: "100%",
-                }}
-                source={{
-                  uri: `https://www.pngplay.com/wp-content/uploads/6/High-Voltage-Symbol-Transparent-PNG.png`,
-                }}
-              />
-            </View>
-            <View style={styles.thongsoValue}>
-              <Text style={styles.thongsoValueHeader}>
-                Điện áp Bình Ac-quy{" "}
-              </Text>
-              <View style={styles.thongsoValueContent}>
-                <Text
-                  style={{
-                    fontSize: 65,
-                  }}>
-                  40
-                </Text>
-                <Text
-                  style={{
-                    fontSize: 65,
-                  }}>
-                  V
-                </Text>
+              <View style={styles.thongso}>
+                <View style={styles.thongsoImage}>
+                  <Image
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                    }}
+                    source={{
+                      uri: `https://cdn-icons-png.flaticon.com/512/1035/1035618.png?w=360`,
+                    }}
+                  />
+                </View>
+                <View style={styles.thongsoValue}>
+                  <Text style={styles.thongsoValueHeader}>
+                    Nhiệt độ nước làm mát
+                  </Text>
+                  <View style={styles.thongsoValueContent}>
+                    <Text
+                      style={{
+                        color: "#fa8072",
+                        fontSize: 65,
+                      }}>
+                      {data.temp}
+                    </Text>
+                    <Text
+                      style={{
+                        color: "#fa8072",
+                        marginBottom: 10,
+                        fontSize: 40,
+                      }}>
+                      °C
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <View style={styles.thongso}>
+                <View style={styles.thongsoImage}>
+                  <Image
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                    }}
+                    source={{
+                      uri: `https://www.pngplay.com/wp-content/uploads/6/High-Voltage-Symbol-Transparent-PNG.png`,
+                    }}
+                  />
+                </View>
+                <View style={styles.thongsoValue}>
+                  <Text style={styles.thongsoValueHeader}>
+                    Điện áp Bình Ac-quy{" "}
+                  </Text>
+                  <View style={styles.thongsoValueContent}>
+                    <Text
+                      style={{
+                        color: "#fa8072",
+                        fontSize: 65,
+                      }}>
+                      {data.voltage}
+                    </Text>
+                    <Text
+                      style={{
+                        color: "#fa8072",
+                        fontSize: 65,
+                      }}>
+                      V
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <View style={styles.thongso}>
+                <View style={styles.thongsoImage}>
+                  <Image
+                    style={{
+                      width: "100%",
+                      height: "70%",
+                    }}
+                    source={{
+                      uri: `https://pngimage.net/wp-content/uploads/2018/06/speed-meter-png-4.png`,
+                    }}
+                  />
+                </View>
+                <View style={styles.thongsoValue}>
+                  <Text style={styles.thongsoValueHeader}>Vận tốc </Text>
+                  <View style={styles.thongsoValueContent}>
+                    <Text
+                      style={{
+                        color: "#fa8072",
+                        fontSize: 65,
+                      }}>
+                      {data.speed}
+                    </Text>
+                    <Text
+                      style={{
+                        color: "#fa8072",
+                        marginTop: 15,
+                        fontSize: 40,
+                      }}>
+                      km/h
+                    </Text>
+                  </View>
+                </View>
               </View>
             </View>
-          </View>
-          <View style={styles.thongso}>
-            <View style={styles.thongsoImage}>
-              <Image
-                style={{
-                  width: "100%",
-                  height: "70%",
-                }}
-                source={{
-                  uri: `https://pngimage.net/wp-content/uploads/2018/06/speed-meter-png-4.png`,
-                }}
-              />
-            </View>
-            <View style={styles.thongsoValue}>
-              <Text style={styles.thongsoValueHeader}>Vận tốc </Text>
-              <View style={styles.thongsoValueContent}>
-                <Text
-                  style={{
-                    fontSize: 65,
-                  }}>
-                  40
+            <View style={styles.chartwrap}>
+              <View style={styles.chartitem}>
+                <Text style={styles.textchart}>
+                  Biểu đồ nhiệt độ nước làm mát
                 </Text>
-                <Text
-                  style={{
-                    marginTop: 15,
-                    fontSize: 40,
-                  }}>
-                  km/h
-                </Text>
+                <Chart data={temp} timelabel={timelabel} unit="" />
+              </View>
+              <View style={styles.chartitem}>
+                <Text style={styles.textchart}>Biểu đồ điện áp bình Acquy</Text>
+                <Chart data={voltage} timelabel={timelabel} unit="V" />
+              </View>
+              <View style={styles.chartitem}>
+                <Text style={styles.textchart}>Biểu đồ vận tốc</Text>
+                <Chart data={speed} timelabel={timelabel} unit="km/h" />
               </View>
             </View>
-          </View>
-          <View>
             <Button
-              title="Xem biểu đồ"
+              title="Qua ben kia"
               onPress={() => navigation.navigate("ChartsScreen")}></Button>
           </View>
-        </View>
+        )}
       </ScrollView>
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  chartwrap: {
+    width: "100%",
+    height: 900,
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  chartitem: {
+    width: "100%",
+    height: "30%",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  textchart: {
+    fontSize: 18,
+    fontFamily: "OpenSans_500Medium",
+  },
+  containerview: {
     flex: 1,
     backgroundColor: "white",
     top: StatusBar.currentHeight,
+    //height: 1000,
+  },
+  container: {
+    height: 1800,
+    width: "100%",
   },
   wrapper: {
     justifyContent: "center",
     alignItems: "center",
-
     height: 680,
     flexDirection: "column",
     justifyContent: "space-between",
@@ -179,6 +275,8 @@ const styles = StyleSheet.create({
   thongsoValueHeader: {
     textAlign: "center",
     fontSize: 18,
+    color: "#ff6347",
+    fontFamily: "OpenSans_600SemiBold",
   },
   thongsoValueContent: {
     width: "90%",

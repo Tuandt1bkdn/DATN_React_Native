@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   SafeAreaView,
@@ -7,58 +7,37 @@ import {
   StyleSheet,
   StatusBar,
   Dimensions,
+  Image,
 } from "react-native";
-import { LineChart } from "react-native-chart-kit";
+import CustomCarousel from "../Components/Layout/CustomCarousel";
 
 function ChartsScreen() {
+  const image = [
+    {
+      uri: "https://i.ibb.co/d24ms5t/carrent.png",
+      title: "Ứng dụng giám sát xe ô tô cho thuê",
+      description: "Hỗ trợ bởi Trung tâm phát triển hạ tầng CNTT Đà Nẵng",
+    },
+    {
+      uri: "https://i.ibb.co/kKpCXvv/image.png",
+      title: "Hiển thị vị trí hiện tại của xe theo thời gian",
+      description: "Sử dụng cảm biến GPS",
+    },
+    {
+      uri: "https://i.ibb.co/Qv3Crrf/image.png",
+      title: "Hiển thị thông số vật lý của xe",
+      description: "Giúp người dùng kiểm tra các thông số của xe",
+    },
+    {
+      uri: "https://i.ibb.co/cJsdfkj/image.png",
+      title: "Vẽ biểu đồ các thông số",
+      description: "Giám sát trực quan, đưa ra những phân tích chính xác",
+    },
+  ];
   return (
     <SafeAreaView style={styles.wrapper}>
       <ScrollView>
-        <View style={styles.content}>
-          <LineChart
-            data={{
-              labels: ["January", "February", "March", "April", "May", "June"],
-              datasets: [
-                {
-                  data: [
-                    Math.random() * 100,
-                    Math.random() * 100,
-                    Math.random() * 100,
-                    Math.random() * 100,
-                    Math.random() * 100,
-                    Math.random() * 100,
-                  ],
-                },
-              ],
-            }}
-            width={Dimensions.get("window").width * 0.95} // from react-native
-            height={220}
-            yAxisLabel="$"
-            yAxisSuffix="k"
-            yAxisInterval={1} // optional, defaults to 1
-            chartConfig={{
-              backgroundColor: "#e26a00",
-              backgroundGradientFrom: "#fb8c00",
-              backgroundGradientTo: "#ffa726",
-              decimalPlaces: 2, // optional, defaults to 2dp
-              color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-              labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-              style: {
-                borderRadius: 16,
-              },
-              propsForDots: {
-                r: "6",
-                strokeWidth: "2",
-                stroke: "#ffa726",
-              },
-            }}
-            bezier
-            style={{
-              marginVertical: 8,
-              borderRadius: 16,
-            }}
-          />
-        </View>
+        <CustomCarousel data={image} />
       </ScrollView>
     </SafeAreaView>
   );
@@ -67,12 +46,11 @@ const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
     top: StatusBar.currentHeight,
+    //bottom: 200,
     backgroundColor: "white",
-  },
-  content: {
-    flexDirection: "column",
-    alignItems: "center",
+    height: 1000,
   },
 });
 
 export default ChartsScreen;
+//<CustomCarousel data={image} />

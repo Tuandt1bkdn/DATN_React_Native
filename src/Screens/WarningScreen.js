@@ -13,17 +13,19 @@ import {
 import { useState, useEffect } from "react";
 import Chart from "../Components/Layout/Chart";
 import axios from "axios";
+import { getDataNow } from "../API/services/getData";
 
-const Warning = ({ navigation }) => {
+const Warning = () => {
   const [data, setData] = useState({});
   const [timelabel, setTimelabel] = useState();
   const [time, setTime] = useState();
   const [temp, setTemp] = useState([22, 22, 22, 22, 22]);
   const [voltage, setVoltage] = useState([22, 22, 22, 22, 22]);
   const [speed, setSpeed] = useState([22, 22, 22, 22, 22]);
+
   useEffect(() => {
     setInterval(() => {
-      axios.get("https://back-end-datn-sor1.vercel.app/datanow").then((res) => {
+      getDataNow().then((res) => {
         const json = res.data;
         setTimelabel([
           json[4].realtimelocal.substring(0, 8),
@@ -61,7 +63,7 @@ const Warning = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.containerview}>
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         {!data ? (
           <Text>Khong co du lieu</Text>
         ) : (
@@ -188,7 +190,7 @@ const Warning = ({ navigation }) => {
                 <Text style={styles.textchart}>
                   Biểu đồ nhiệt độ nước làm mát
                 </Text>
-                <Chart data={temp} timelabel={timelabel} unit="" />
+                <Chart data={temp} timelabel={timelabel} unit="℃" />
               </View>
               <View style={styles.chartitem}>
                 <Text style={styles.textchart}>Biểu đồ điện áp bình Acquy</Text>
@@ -199,9 +201,6 @@ const Warning = ({ navigation }) => {
                 <Chart data={speed} timelabel={timelabel} unit="km/h" />
               </View>
             </View>
-            <Button
-              title="Qua ben kia"
-              onPress={() => navigation.navigate("ChartsScreen")}></Button>
           </View>
         )}
       </ScrollView>
@@ -231,7 +230,7 @@ const styles = StyleSheet.create({
   containerview: {
     flex: 1,
     backgroundColor: "white",
-    top: StatusBar.currentHeight,
+    //top: StatusBar.currentHeight,
     //height: 1000,
   },
   container: {

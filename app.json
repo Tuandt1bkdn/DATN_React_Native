@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Test2",
+    "name": "LoRaWAN GPS",
     "slug": "Test2",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -29,6 +29,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "e7b60ec9-d80d-432b-b9cb-2170de3808a1"
+      }
     }
   }
 }

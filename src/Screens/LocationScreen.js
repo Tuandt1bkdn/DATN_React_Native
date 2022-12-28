@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import MapView, { Marker, Geojson, PROVIDER_GOOGLE } from "react-native-maps";
 import {
   View,
@@ -9,6 +9,7 @@ import {
   Dimensions,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import { getDataNow } from "../API/services/getData";
 
 const { width, height } = Dimensions.get("window");
 const ASPECT_RATIO = width / height;
@@ -40,20 +41,54 @@ const myPlace = {
   ],
 };
 const Location = ({ navigation }) => {
+  const [lngLatNow, getLngLatNow] = useState({
+    latitude: 16.4669,
+    longitude: 107.6452,
+    latitudeDelta: Latitude_Delta,
+    longitudeDelta: Longitude_Delta,
+  });
+  const [para, getPara] = useState({});
+  useEffect(() => {
+    setInterval(() => {
+      getDataNow()
+        .then((res) => {
+          const lng = res.data[0].lng;
+          const lat = res.data[0].lat;
+          getLngLatNow({
+            latitude: lat,
+            longitude: lng,
+            latitudeDelta: Latitude_Delta,
+            longitudeDelta: Longitude_Delta,
+          });
+          getPara(res.data[0]);
+        })
+        .catch((e) => console.log(e));
+    }, 10000);
+  }, []);
+  //console.log(lngLatNow);
   return (
     <View style={styles.center}>
       <View style={styles.toa_do}>
         <Text style={{ textAlign: "left", backgroundColor: "transparent" }}>
-          Toạ độ vị trí hiện tại: longitude: 108.1515, latitude: 16.0781{" "}
+          Toạ độ vị trí lúc : {para.realtimelocal}
+        </Text>
+        <Text
+          style={{
+            marginTop: 10,
+          }}>
+          longitude: {lngLatNow.longitude}, latitude: {lngLatNow.latitude}{" "}
         </Text>
       </View>
       <View style={styles.mapwrap}>
         <MapView
           style={styles.map}
           provider={PROVIDER_GOOGLE}
-          initialRegion={Init_Position}>
+          initialRegion={lngLatNow}>
           <Marker coordinate={Init_Position} title="Vi tri xe thu 1" />
-          <Marker coordinate={Second_Position} title="Vi tri xe luc 21:09:33" />
+          <Marker
+            coordinate={lngLatNow}
+            title="Vi tri xe luc `${para.realtimelocal}`"
+          />
         </MapView>
       </View>
     </View>

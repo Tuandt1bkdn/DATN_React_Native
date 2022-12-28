@@ -51,7 +51,7 @@ const Home = ({ navigation }) => {
   ];
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.center}>
           <View style={styles.gif}>
             <Image
@@ -90,7 +90,7 @@ const Home = ({ navigation }) => {
                   fontWeight: "600",
                   color: "#4d4d4d",
                 }}>
-                Xin chào, quanly123
+                Xin chào, Lorawangps01
               </Text>
             </View>
             <FontAwesomeIcon icon={faAngleRight} style={{ marginRight: 10 }} />
@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     width: WIDTH,
-    top: StatusBar.currentHeight,
+    //top: StatusBar.currentHeight,
   },
   center: {
     flex: 1,

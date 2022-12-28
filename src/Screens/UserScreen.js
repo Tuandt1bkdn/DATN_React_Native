@@ -19,14 +19,14 @@ const UserScreen = () => {
   useEffect(() => {
     DriverManage()
       .then((res) => {
-        setDriver1(res.data[4]);
+        setDriver1(res.data[0]);
       })
       .catch((e) => console.log(e));
   }, []);
 
   return (
     <SafeAreaView style={styles.wrap}>
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         {!driver1 ? (
           <Text>Khong co du lieu</Text>
         ) : (
